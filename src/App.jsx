@@ -30,7 +30,7 @@ const [newMenuItem, setNewMenuItem] = useState({
 });
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/menu/menus")
+axios.get("https://menucreation-backend.onrender.com/api/menu/menus")
       .then(res => setMenus(res.data))
       .catch(err => console.error(err));
   }, []);
@@ -43,7 +43,7 @@ const [newMenuItem, setNewMenuItem] = useState({
     }
 
     axios
-      .post("http://localhost:5000/api/menu/menus", newMenu)
+      .post("https://menucreation-backend.onrender.com/api/menu/menus", newMenu)
       .then((res) => {
         setMenus([...menus, res.data]);
         setShowAddForm(false);
@@ -58,7 +58,7 @@ const handleAddMenuItem = () => {
     return;
   }
 
-  axios.post(`http://localhost:5000/api/menu/menus/${selectedMenu._id}/items`, newMenuItem)
+axios.post(`https://menucreation-backend.onrender.com/api/menu/menus/${selectedMenu._id}/items`, newMenuItem)
     .then((res) => {
       setMenuItems([...menuItems, res.data]);
       setShowAddMenuItemForm(false);
@@ -73,7 +73,7 @@ const handleAddMenuItem = () => {
   setMenuItems([]); 
   console.log("Selected Menu:", menu);
 
-    axios.get(`http://localhost:5000/api/menu/menus/${menu._id}/items`)
+axios.get(`https://menucreation-backend.onrender.com/api/menu/menus/${menu._id}/items`)
       .then(res => setMenuItems(res.data))
       .catch(err => console.error("Error fetching menu items:", err));
   };
